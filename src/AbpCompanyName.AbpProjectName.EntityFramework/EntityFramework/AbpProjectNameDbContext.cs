@@ -3,9 +3,11 @@ using Abp.Zero.EntityFramework;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.MultiTenancy;
 using AbpCompanyName.AbpProjectName.Users;
+using System.Data.Entity;
 
 namespace AbpCompanyName.AbpProjectName.EntityFramework
 {
+    [DbConfigurationType(typeof(CodeConfig))]
     public class AbpProjectNameDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
@@ -36,6 +38,15 @@ namespace AbpCompanyName.AbpProjectName.EntityFramework
             : base(connection, true)
         {
 
+        }
+    }
+
+    public class CodeConfig : DbConfiguration
+    {
+        public CodeConfig()
+        {
+            SetProviderServices("System.Data.SqlClient",
+                System.Data.Entity.SqlServer.SqlProviderServices.Instance);
         }
     }
 }
