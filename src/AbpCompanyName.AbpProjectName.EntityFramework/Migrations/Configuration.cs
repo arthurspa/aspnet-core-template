@@ -3,10 +3,11 @@ using Abp.MultiTenancy;
 using Abp.Zero.EntityFramework;
 using AbpCompanyName.AbpProjectName.Migrations.SeedData;
 using EntityFramework.DynamicFilters;
+using AbpCompanyName.AbpProjectName.EntityFramework;
 
 namespace AbpCompanyName.AbpProjectName.Migrations
 {
-    public sealed class Configuration : DbMigrationsConfiguration<AbpProjectName.EntityFramework.AbpProjectNameDbContext>, IMultiTenantSeed
+    public sealed class Configuration : DbMigrationsConfiguration<AbpProjectNameDbContext>, IMultiTenantSeed
     {
         public AbpTenantBase Tenant { get; set; }
 
@@ -16,7 +17,7 @@ namespace AbpCompanyName.AbpProjectName.Migrations
             ContextKey = "AbpProjectName";
         }
 
-        protected override void Seed(AbpProjectName.EntityFramework.AbpProjectNameDbContext context)
+        protected override void Seed(AbpProjectNameDbContext context)
         {
             context.DisableAllFilters();
 
