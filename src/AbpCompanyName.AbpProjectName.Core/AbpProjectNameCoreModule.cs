@@ -6,9 +6,11 @@ using AbpCompanyName.AbpProjectName.MultiTenancy;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Users;
 using AbpCompanyName.AbpProjectName.Authorization;
+using Abp.Zero;
 
 namespace AbpCompanyName.AbpProjectName
 {
+    [DependsOn(typeof(AbpZeroCoreModule))]
     public class AbpProjectNameCoreModule : AbpModule
     {
         public override void PreInitialize()
